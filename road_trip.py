@@ -63,35 +63,3 @@ print(f'Your first stop is {dest1[0]}, and your last stop is {dest4[0]}.')
 print(f'Your total distance is {totalmiles} miles')
 print(f'You will need {totalmiles / mileage} gallons of gasoline.\nIt will cost you roughly ${gascost:.4}')
 print(f'\n{dest1[0]} -> {dest2[0]} -> {dest3[0]} -> {dest4[0]}')
-
-from geopy.distance import great_circle
-
-# Example coordinates (latitude, longitude)
-coord1_lat = float(input("Enter latitude for first point: "))
-coord1_lon = float(input("Enter longitude for first point: "))
-coord2_lat = float(input("Enter latitude for second point: "))
-coord2_lon = float(input("Enter longitude for second point: "))
-
-coords_1 = (coord1_lat, coord1_lon)
-coords_2 = (coord2_lat, coord2_lon)
-
-# Calculate the distance
-distance = great_circle(coords_1, coords_2).kilometers
-
-print(f"The distance between {coords_1} and {coords_2} is {distance:.2f} kilometers.")
-
-import geopy
-from geopy.geocoders import Nominatim
-
-# Initialize Nominatim geocoder with a custom user_agent
-geolocator = Nominatim(user_agent="my-geocoder-app")
-
-# Get coordinates for a sample city
-city_name = input("Enter a city name to get its coordinates: ")
-location = geolocator.geocode(city_name)
-
-if location:
-    print(f"The coordinates for {city_name} are: Latitude {location.latitude}, Longitude {location.longitude}")
-    print(f"Full address: {location.address}")
-else:
-    print(f"Could not find coordinates for {city_name}.")
